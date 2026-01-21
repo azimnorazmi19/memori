@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>collection of our love 💖</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+      color: #333;
+      text-align: center;
+    }
+    .container {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 5px;
+    }
+    h2 {
+      font-weight: 400;
+      margin-bottom: 20px;
+    }
+    .names {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+      opacity: 0.9;
+    }
+    .card {
+      background: white;
+      border-radius: 20px;
+      padding: 25px;
+      max-width: 520px;
+      width: 100%;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    }
+    p {
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+    .secret {
+      margin-top: 25px;
+      font-size: 0.95rem;
+      opacity: 0.7;
+      cursor: pointer;
+    }
+    .secret-message {
+      display: none;
+      margin-top: 15px;
+      font-size: 1.2rem;
+      color: #e75480;
+    }
+    .carousel {
+      position: relative;
+      width: 100%;
+      max-width: 480px;
+      margin-top: 20px;
+      overflow: hidden;
+      border-radius: 15px;
+    }
+    .carousel-track {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+    }
+    .carousel img {
+      width: 100%;
+      flex-shrink: 0;
+      object-fit: cover;
+      border-radius: 15px;
+    }
+    .carousel-buttons {
+      margin-top: 10px;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+    .carousel-buttons button {
+      padding: 8px 15px;
+      border: none;
+      border-radius: 10px;
+      background: #ee9ca7;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+    }
+    footer {
+      margin-top: 30px;
+      font-size: 0.9rem;
+      opacity: 0.8;
+    }
+  </style>
+</head>
+<body>
+  <!-- Background song -->
+  <audio id="loveSong" src="your-song.mp3" autoplay loop></audio>
+
+  <div class="container">
+    <h1>collection of our love 💕</h1>
+    <h2>since <span id="anniv-date">16 / 10 / 2025</span></h2>
+    <div class="names">ajim ❤️ farihin</div>
+
+    <div class="card">
+      <p>
+        whne im with you, i felt soft, warm, and safe. 
+        thank you for choosing me, for staying, and for loving me in ways 
+        i didnt know i needed. i still choose you sayang. today, tomorrow and always.
+      </p>
+
+      <!-- Carousel with photos already added -->
+      <div class="carousel" id="carouselContainer">
+        <div class="carousel-track" id="carouselTrack">
+          <!-- Manually added photos here -->
+          <img src="photo1.jpg" />
+          <img src="photo2.jpg" />
+          <img src="photo3.jpg" />
+        </div>
+      </div>
+      <div class="carousel-buttons" id="carouselButtons">
+        <button onclick="prevSlide()">◀️</button>
+        <button onclick="nextSlide()">▶️</button>
+      </div>
+
+      <div class="secret" onclick="revealMessage()">
+        tap here 🤍
+      </div>
+      <div class="secret-message" id="secretMessage">
+        i love you more than anything and even more than myself sayang.
+      </div>
+    </div>
+
+    <footer>
+      made with love, untuk farihin 🤍
+    </footer>
+  </div>
+
+  <script>
+    let currentIndex = 0;
+    const totalSlides = document.getElementById('carouselTrack').children.length;
+
+    function updateCarousel(){
+      const track = document.getElementById('carouselTrack');
+      track.style.transform = `translateX(-${currentIndex * 100}%)`;
+    }
+
+    function nextSlide(){
+      currentIndex = (currentIndex + 1) % totalSlides;
+      updateCarousel();
+    }
+
+    function prevSlide(){
+      currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+      updateCarousel();
+    }
+
+    function revealMessage() {
+      const msg = document.getElementById('secretMessage');
+      msg.style.display = msg.style.display === 'block' ? 'none' : 'block';
+    }
+  </script>
+</body>
+</html>
